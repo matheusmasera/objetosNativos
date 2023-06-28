@@ -77,4 +77,9 @@ const compras = [
   },
 ];
 
-const totalCompras = compras.map((el) => console.log("O preço é" + " " + el.preco));
+const totalCompras = compras.reduce((acumulador, el) => {
+  const precos = +el.preco.replace("R$", "").trim().replace(",", ".");
+  return acumulador + precos;
+}, 0);
+
+console.log(totalCompras);
